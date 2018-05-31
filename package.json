@@ -1,0 +1,30 @@
+{
+  "name": "react-boilerplate",
+  "version": "1.0.0",
+  "description": "React boilerplate with webpack 4",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --mode development",
+    "build": "webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huyb1991/react-boilerplate.git"
+  },
+  "keywords": [
+    "react",
+    "webpack",
+    "react-boilerplate"
+  ],
+  "author": "Huy Nguyen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/huyb1991/react-boilerplate/issues"
+  },
+  "homepage": "https://github.com/huyb1991/react-boilerplate#readme",
+  "devDependencies": {
+    "webpack": "^4.10.2",
+    "webpack-cli": "^2.1.4"
+  }
+}
