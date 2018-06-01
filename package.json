@@ -6,12 +6,12 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
-    "lint": "eslint ./src/**/*.js",
+    "lint": "./node_modules/.bin/eslint ./src/**/*.js",
     "lint:staged": "lint-staged",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "lint-staged": {
-    "*.js": "lint"
+    "src/**/*.js": "lint"
   },
   "pre-commit": "lint:staged",
   "repository": {
