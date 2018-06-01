@@ -6,9 +6,14 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
-    "lint": "eslint ./src/index.js",
+    "lint": "eslint ./src/**/*.js",
+    "lint:staged": "lint-staged",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "lint-staged": {
+    "*.js": "lint"
+  },
+  "pre-commit": "lint:staged",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/huyb1991/react-boilerplate.git"
@@ -36,6 +41,8 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.8.2",
     "html-webpack-plugin": "^3.2.0",
+    "lint-staged": "^7.1.3",
+    "pre-commit": "^1.2.2",
     "webpack": "^4.10.2",
     "webpack-cli": "^2.1.4",
     "webpack-dev-server": "^3.1.4"
