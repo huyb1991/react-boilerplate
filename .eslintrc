@@ -19,8 +19,9 @@
     }
   },
   "rules": {
-      "semi": ["error", "always"],
+      "semi": ["error", "never"],
       "quotes": ["error", "single"],
-      "linebreak-style": 0
+      "linebreak-style": 0,
+      "react/jsx-filename-extension": 0
   }
 }

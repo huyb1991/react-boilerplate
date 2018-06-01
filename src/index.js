@@ -1,5 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react'
+import ReactDOM from 'react-dom'
 
 import styled, { css } from 'styled-components'
 
@@ -15,16 +15,14 @@ const Button = styled.button`
     background: palevioletred;
     color: white;
   `}
-`;
+`
 
-const App = () => {
-  return (
-    <div>
-      <p>Hello React!</p>
-      <Button>Normal Button</Button>
-      <Button primary>Primary Button</Button>
-    </div>
-  );
-};
+const App = () => (
+  <div>
+    <p>Hello React!</p>
+    <Button>Normal Button</Button>
+    <Button primary>Primary Button</Button>
+  </div>
+)
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById('root'))
