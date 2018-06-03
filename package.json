@@ -13,7 +13,6 @@
   "lint-staged": {
     "src/**/*.js": "lint"
   },
-  "pre-commit": "lint:staged",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/huyb1991/react-boilerplate.git"
