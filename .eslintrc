@@ -22,6 +22,10 @@
       "semi": ["error", "never"],
       "quotes": ["error", "single"],
       "linebreak-style": 0,
-      "react/jsx-filename-extension": 0
+      "react/jsx-filename-extension": 0,
+      "comma-dangle": [
+        2,
+        "always-multiline"
+      ]
   }
 }
