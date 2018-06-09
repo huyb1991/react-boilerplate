@@ -11,14 +11,23 @@ const HomeWrapper = styled.div`
 
 class Home extends React.Component {
   componentDidMount() {
-    console.log('Home container mounter')
     this.props.loadRepos()
   }
 
   render() {
+    const { home } = this.props
+    const username = home.get('currentUser')
+    const repos = home.getIn(['userData', 'repositories'])
+
     return (
       <HomeWrapper>
         <p>This is Home page</p>
+        <p>Username: {username}</p>
+        <ul>
+          {repos && repos.map(repo => (
+            <li key={repo.id}>{repo.name}</li>
+          ))}
+        </ul>
       </HomeWrapper>
     )
   }
@@ -32,10 +41,8 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    obj: state,
-  }
-}
+const mapStateToProps = state => ({
+  home: state.home,
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
