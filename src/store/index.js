@@ -1,19 +1,14 @@
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
-import rootSaga from './rootSaga'
 
-function todos(state = [], action) {
-  switch (action.type) {
-    case 'ADD_TODO':
-      return state.concat([action.text])
-    default:
-      return state
-  }
-}
+// Saga and Reducer
+import rootSaga from '../saga'
+import rootReducer from '../reducers'
 
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware(...rootSaga)
 
+// Middlewares configs
 let middlewares = [sagaMiddleware]
 
 if (process.env.NODE_ENV !== 'production') {
@@ -23,7 +18,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const store = createStore(
-  todos,
+  rootReducer,
   applyMiddleware(...middlewares)
 )
 

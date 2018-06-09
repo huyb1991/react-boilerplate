@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 // Configs
-import store from './configureStore'
+import store from './store'
 
 // Components
 import Header from './components/Header'
