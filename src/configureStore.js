@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
+import rootSaga from './rootSaga'
 
 function todos(state = [], action) {
   switch (action.type) {
@@ -11,14 +12,14 @@ function todos(state = [], action) {
 }
 
 // create the saga middleware
-const sagaMiddleware = createSagaMiddleware()
+const sagaMiddleware = createSagaMiddleware(...rootSaga)
 
 let middlewares = [sagaMiddleware]
 
 if (process.env.NODE_ENV !== 'production') {
-  const logger = require('redux-logger') // eslint-disable-line
+  const { logger } = require('redux-logger') // eslint-disable-line
 
-  middlewares = middlewares.push(...[logger]) // Use push api for empty array
+  middlewares = [...middlewares, logger]
 }
 
 const store = createStore(
