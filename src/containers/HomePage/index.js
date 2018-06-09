@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 // Actions
@@ -15,9 +16,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const { home } = this.props
-    const username = home.get('currentUser')
-    const repos = home.getIn(['userData', 'repositories'])
+    const { username, repos } = this.props
 
     return (
       <HomeWrapper>
@@ -33,16 +32,24 @@ class Home extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loadRepos: () => {
-      return dispatch(loadRepos())
-    },
-  }
+Home.defaultProps = {
+  username: '',
+  repos: [],
 }
 
+Home.propTypes = {
+  username: PropTypes.string,
+  repos: PropTypes.arrayOf(PropTypes.object),
+  loadRepos: PropTypes.func.isRequired,
+}
+
+const mapDispatchToProps = dispatch => ({
+  loadRepos: () => dispatch(loadRepos()),
+})
+
 const mapStateToProps = state => ({
-  home: state.home,
+  username: state.home.get('currentUser'),
+  repos: state.home.get('repos'),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
