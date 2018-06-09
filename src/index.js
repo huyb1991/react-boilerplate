@@ -1,15 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 // Components
-import Button from './components/Button'
+import HomePage from './containers/HomePage'
+import AboutPage from './containers/AboutPage'
+import NotFoundPage from './containers/NotFoundPage'
 
 const App = () => (
-  <div>
-    <p>Hello React!</p>
-    <Button>Normal Button</Button>
-    <Button type="primary">Primary Button</Button>
-  </div>
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+      <Route path="/about" component={AboutPage} />
+      <Route path="" component={NotFoundPage} />
+    </Switch>
+  </BrowserRouter>
 )
 
 ReactDOM.render(<App />, document.getElementById('root'))
