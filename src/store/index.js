@@ -6,7 +6,7 @@ import rootSaga from '../saga'
 import rootReducer from '../reducers'
 
 // create the saga middleware
-const sagaMiddleware = createSagaMiddleware(...rootSaga)
+const sagaMiddleware = createSagaMiddleware()
 
 // Middlewares configs
 let middlewares = [sagaMiddleware]
@@ -21,5 +21,7 @@ const store = createStore(
   rootReducer,
   applyMiddleware(...middlewares)
 )
+
+sagaMiddleware.run(rootSaga)
 
 export default store

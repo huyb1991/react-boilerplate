@@ -12,15 +12,19 @@ import request from '../../helpers/request'
  * Github repos request/response handler
  */
 export function* getRepos() {
+  console.log('getRepos')
   // Select username from store
   const username = 'huyb1991'
   const requestURL = `https://api.github.com/users/${username}/repos?type=all&sort=updated`
 
   try {
+    console.log('Go in try')
     // Call our request helper (see 'utils/request')
     const repos = yield call(request, requestURL)
+    console.log('repos: ', repos)
     yield put(reposLoaded(repos, username))
   } catch (err) {
+    console.log('Go in catch')
     yield put(repoLoadingError(err))
   }
 }
@@ -28,10 +32,8 @@ export function* getRepos() {
 /**
  * Root saga manages watcher lifecycle
  */
-export default function* githubData() {
-  // Watches for LOAD_REPOS actions and calls getRepos when one comes in.
-  // By using `takeLatest` only the result of the latest API call is applied.
-  // It returns task descriptor (just like fork) so we can continue execution
-  // It will be cancelled automatically on component unmount
-  yield takeLatest(LOAD_REPOS, getRepos)
-}
+const homeSaga = [
+  takeLatest(LOAD_REPOS, getRepos),
+]
+
+export default homeSaga
