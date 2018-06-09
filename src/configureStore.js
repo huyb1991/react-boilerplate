@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware } from 'redux'
+import createSagaMiddleware from 'redux-saga'
 
 function todos(state = [], action) {
   switch (action.type) {
@@ -9,7 +10,10 @@ function todos(state = [], action) {
   }
 }
 
-let middlewares = []
+// create the saga middleware
+const sagaMiddleware = createSagaMiddleware()
+
+let middlewares = [sagaMiddleware]
 
 if (process.env.NODE_ENV !== 'production') {
   const logger = require('redux-logger') // eslint-disable-line
