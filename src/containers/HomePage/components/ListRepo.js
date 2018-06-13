@@ -14,7 +14,7 @@ ListRepo.defaultProps = {
 }
 
 ListRepo.propTypes = {
-  repos: PropTypes.array,
+  repos: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
 }
 
 export default ListRepo

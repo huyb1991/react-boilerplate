@@ -46,7 +46,7 @@ Home.defaultProps = {
 
 Home.propTypes = {
   username: PropTypes.string,
-  repos: PropTypes.arrayOf(PropTypes.object),
+  repos: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   loadRepos: PropTypes.func.isRequired,
 }
 
