@@ -6,7 +6,7 @@ import { call, put, takeLatest } from 'redux-saga/effects'
 import { LOAD_REPOS } from './constants'
 import { reposLoaded, repoLoadingError } from './actions'
 
-import request from '../../helpers/request'
+import request from 'helpers/request'
 
 /**
  * Github repos request/response handler

@@ -26,6 +26,11 @@
       "comma-dangle": [
         2,
         "always-multiline"
-      ]
+      ],
+      "import/first": "off",
+      "import/extensions": "off",
+      "import/no-unresolved": "off",
+      "react/forbid-prop-types": "off",
+      "jsx-a11y/anchor-is-valid": "off"
   }
 }
