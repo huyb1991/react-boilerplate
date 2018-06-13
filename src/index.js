@@ -8,7 +8,8 @@ import { injectGlobal } from 'styled-components'
 import store from './store'
 
 // Components
-import Header from './components/Header'
+import Header from 'components/Header'
+import Footer from 'components/Footer'
 
 // Pages
 import HomePage from './containers/HomePage'
@@ -50,6 +51,7 @@ const App = () => (
           <Route path="/about" component={AboutPage} />
           <Route path="" component={NotFoundPage} />
         </Switch>
+        <Footer />
       </div>
     </BrowserRouter>
   </Provider>
