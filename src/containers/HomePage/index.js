@@ -8,6 +8,10 @@ import { loadRepos } from './actions'
 // Components
 import Container from 'components/Layouts/Container'
 import Column from 'components/Layouts/Column'
+import Card from 'components/Card'
+
+import Title from './components/Title'
+import ListRepo from './components/ListRepo'
 
 class Home extends React.Component {
   componentDidMount() {
@@ -20,16 +24,15 @@ class Home extends React.Component {
     return (
       <Container display="flex">
         <Column size="small">
-          <p>Left column</p>
+          <Card>
+            <p>Left column</p>
+          </Card>
         </Column>
         <Column size="medium">
-          <p>This is Home page</p>
-          <p>Username: {username}</p>
-          <ul>
-            {repos && repos.map(repo => (
-              <li key={repo.id}>{repo.name}</li>
-            ))}
-          </ul>
+          <Card>
+            <Title title={`${username} repos:`} />
+            <ListRepo repos={repos} />
+          </Card>
         </Column>
       </Container>
     )
