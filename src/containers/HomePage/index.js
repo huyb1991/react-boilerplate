@@ -1,14 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 
 // Actions
 import { loadRepos } from './actions'
 
-const HomeWrapper = styled.div`
-  background-color: #eee
-`
+// Components
+import Container from 'components/Layouts/Container'
+import Column from 'components/Layouts/Column'
 
 class Home extends React.Component {
   componentDidMount() {
@@ -19,15 +18,20 @@ class Home extends React.Component {
     const { username, repos } = this.props
 
     return (
-      <HomeWrapper>
-        <p>This is Home page</p>
-        <p>Username: {username}</p>
-        <ul>
-          {repos && repos.map(repo => (
-            <li key={repo.id}>{repo.name}</li>
-          ))}
-        </ul>
-      </HomeWrapper>
+      <Container display="flex">
+        <Column size="small">
+          <p>Left column</p>
+        </Column>
+        <Column size="medium">
+          <p>This is Home page</p>
+          <p>Username: {username}</p>
+          <ul>
+            {repos && repos.map(repo => (
+              <li key={repo.id}>{repo.name}</li>
+            ))}
+          </ul>
+        </Column>
+      </Container>
     )
   }
 }
