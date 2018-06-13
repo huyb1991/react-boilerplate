@@ -1,14 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 
 // Actions
 import { loadRepos } from './actions'
 
-const HomeWrapper = styled.div`
-  background-color: #eee
-`
+// Components
+import Container from 'components/Layouts/Container'
+import Column from 'components/Layouts/Column'
+import Card from 'components/Card'
+
+import Title from './components/Title'
+import ListRepo from './components/ListRepo'
 
 class Home extends React.Component {
   componentDidMount() {
@@ -19,15 +22,19 @@ class Home extends React.Component {
     const { username, repos } = this.props
 
     return (
-      <HomeWrapper>
-        <p>This is Home page</p>
-        <p>Username: {username}</p>
-        <ul>
-          {repos && repos.map(repo => (
-            <li key={repo.id}>{repo.name}</li>
-          ))}
-        </ul>
-      </HomeWrapper>
+      <Container display="flex">
+        <Column size="small">
+          <Card>
+            <p>Left column</p>
+          </Card>
+        </Column>
+        <Column size="medium">
+          <Card>
+            <Title title={`${username} repos:`} />
+            <ListRepo repos={repos} />
+          </Card>
+        </Column>
+      </Container>
     )
   }
 }
@@ -39,7 +46,7 @@ Home.defaultProps = {
 
 Home.propTypes = {
   username: PropTypes.string,
-  repos: PropTypes.arrayOf(PropTypes.object),
+  repos: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   loadRepos: PropTypes.func.isRequired,
 }
 

@@ -1,3 +1,4 @@
+const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 const htmlPlugin = new HtmlWebPackPlugin({
@@ -7,6 +8,13 @@ const htmlPlugin = new HtmlWebPackPlugin({
 
 module.exports = {
   entry: ['babel-polyfill', './src/index.js'],
+  resolve: {
+    alias: {
+      components: path.resolve(__dirname, 'src/components/'),
+      helpers: path.resolve(__dirname, 'src/helpers/'),
+      themes: path.resolve(__dirname, 'src/themes/'),
+    },
+  },
   module: {
     rules: [
       {
