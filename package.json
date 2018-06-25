@@ -4,8 +4,8 @@
   "description": "React boilerplate with webpack 4",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development",
-    "build": "webpack --mode production",
+    "start": "webpack-dev-server --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
     "lint": "./node_modules/.bin/eslint ./src/**/*.js",
     "lint:staged": "lint-staged",
     "test": "echo \"Error: no test specified\" && exit 1"
