@@ -27,6 +27,10 @@ module.exports = {
     ],
   },
   plugins: [htmlPlugin],
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
   devServer: {
     historyApiFallback: true,
   },
