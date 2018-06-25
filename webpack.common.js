@@ -1,7 +1,10 @@
+// Follow official guide: https://webpack.js.org/guides/production/
 const path = require('path')
-const HtmlWebPackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin') // eslint-disable-line
+const HtmlWebpackPlugin = require('html-webpack-plugin') // eslint-disable-line
 
-const htmlPlugin = new HtmlWebPackPlugin({
+const cleanDist = new CleanWebpackPlugin(['dist'])
+const htmlPlugin = new HtmlWebpackPlugin({
   template: './src/index.html',
   filename: './index.html',
 })
@@ -26,12 +29,9 @@ module.exports = {
       },
     ],
   },
-  plugins: [htmlPlugin],
+  plugins: [cleanDist, htmlPlugin],
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
-  },
-  devServer: {
-    historyApiFallback: true,
   },
 }
