@@ -17,7 +17,7 @@ import AboutPage from './containers/AboutPage'
 import NotFoundPage from './containers/NotFoundPage'
 
 // Themes
-import { COLORS } from 'themes'
+import { COLORS } from '@themes'
 
 // eslint-disable-next-line
 injectGlobal`

@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 // Themes
-import { COLORS } from 'themes'
+import { COLORS } from '@themes'
 
 const FooterWrapper = styled.footer`
   background-color: ${COLORS.white};
