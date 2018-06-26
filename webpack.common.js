@@ -13,9 +13,9 @@ module.exports = {
   entry: ['babel-polyfill', './src/index.js'],
   resolve: {
     alias: {
-      components: path.resolve(__dirname, 'src/components/'),
-      helpers: path.resolve(__dirname, 'src/helpers/'),
-      themes: path.resolve(__dirname, 'src/themes/'),
+      '@components': path.resolve(__dirname, 'src/components/'),
+      '@helpers': path.resolve(__dirname, 'src/helpers/'),
+      '@themes': path.resolve(__dirname, 'src/themes/'),
     },
   },
   module: {
