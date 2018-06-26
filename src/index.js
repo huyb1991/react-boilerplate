@@ -8,8 +8,8 @@ import { injectGlobal } from 'styled-components'
 import store from './store'
 
 // Components
-import Header from 'components/Header'
-import Footer from 'components/Footer'
+import Header from '@components/Header'
+import Footer from '@components/Footer'
 
 // Pages
 import HomePage from './containers/HomePage'

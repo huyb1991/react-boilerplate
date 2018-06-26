@@ -6,9 +6,9 @@ import PropTypes from 'prop-types'
 import { loadRepos } from './actions'
 
 // Components
-import Container from 'components/Layouts/Container'
-import Column from 'components/Layouts/Column'
-import Card from 'components/Card'
+import Container from '@components/Layouts/Container'
+import Column from '@components/Layouts/Column'
+import Card from '@components/Card'
 
 import Title from './components/Title'
 import ListRepo from './components/ListRepo'
