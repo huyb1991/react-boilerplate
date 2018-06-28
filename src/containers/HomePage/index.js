@@ -64,6 +64,13 @@ class Home extends React.Component {
               list={ddExample}
               handleSelectItem={() => {}}
             />
+
+            <Label>Textarea example:</Label>
+            <Textarea
+              handleInputChange={this.handleInputChange}
+              inputValue={inputValue}
+              placeholder="Textarea example"
+            />
           </Card>
         </Column>
         <Column size="medium">
