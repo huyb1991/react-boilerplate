@@ -36,6 +36,12 @@ class Home extends React.Component {
     const { inputValue } = this.state
     const { username, repos } = this.props
 
+    const ddExample = [
+      { value: 1, text: 'Option 1' },
+      { value: 2, text: 'Option 2' },
+      { value: 3, text: 'Option 3' },
+    ]
+
     return (
       <Container display="flex">
         <Column size="small">
@@ -49,6 +55,14 @@ class Home extends React.Component {
               inputType="text"
               inputValue={inputValue}
               placeholder="Input Example"
+            />
+
+            <Label>Dropdown example:</Label>
+            <Dropdown
+              size="full"
+              title="Select Option"
+              list={ddExample}
+              handleSelectItem={() => {}}
             />
           </Card>
         </Column>
