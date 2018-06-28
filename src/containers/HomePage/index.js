@@ -10,22 +10,46 @@ import Container from '@components/Layouts/Container'
 import Column from '@components/Layouts/Column'
 import Card from '@components/Card'
 
+import {
+  Dropdown,
+  Label,
+  Input,
+  Textarea,
+} from '@components/Form'
 import Title from './components/Title'
 import ListRepo from './components/ListRepo'
 
 class Home extends React.Component {
+  state = {
+    inputValue: null,
+  }
+
   componentDidMount() {
     this.props.loadRepos()
   }
 
+  handleInputChange = (text) => {
+    this.setState({ inputValue: text })
+  }
+
   render() {
+    const { inputValue } = this.state
     const { username, repos } = this.props
 
     return (
       <Container display="flex">
         <Column size="small">
           <Card>
-            <p>Left column</p>
+            <Title>Form components</Title>
+            <Label isRequired>Label Required</Label>
+            <Input
+              required="required"
+              handleInputChange={this.handleInputChange}
+              isInvalid={!inputValue || false}
+              inputType="text"
+              inputValue={inputValue}
+              placeholder="Input Example"
+            />
           </Card>
         </Column>
         <Column size="medium">
