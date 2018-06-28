@@ -10,9 +10,18 @@ const StyledButton = styled.button`
   color: palevioletred;
   border: 2px solid palevioletred;
 
+  ${props => props.size === 'full' && css`
+    width: 100%;
+  `}
+
   ${props => props.type === 'primary' && css`
     background: palevioletred;
     color: white;
+  `}
+
+  ${props => props.disabled && css`
+    cursor: not-allowed;
+    opacity: 0.7;
   `}
 `
 

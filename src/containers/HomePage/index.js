@@ -6,26 +6,71 @@ import PropTypes from 'prop-types'
 import { loadRepos } from './actions'
 
 // Components
-import Container from 'components/Layouts/Container'
-import Column from 'components/Layouts/Column'
-import Card from 'components/Card'
+import Container from '@components/Layouts/Container'
+import Column from '@components/Layouts/Column'
+import Card from '@components/Card'
 
+import {
+  Dropdown,
+  Label,
+  Input,
+  Textarea,
+} from '@components/Form'
 import Title from './components/Title'
 import ListRepo from './components/ListRepo'
 
 class Home extends React.Component {
+  state = {
+    inputValue: null,
+  }
+
   componentDidMount() {
     this.props.loadRepos()
   }
 
+  handleInputChange = (text) => {
+    this.setState({ inputValue: text })
+  }
+
   render() {
+    const { inputValue } = this.state
     const { username, repos } = this.props
+
+    const ddExample = [
+      { value: 1, text: 'Option 1' },
+      { value: 2, text: 'Option 2' },
+      { value: 3, text: 'Option 3' },
+    ]
 
     return (
       <Container display="flex">
         <Column size="small">
           <Card>
-            <p>Left column</p>
+            <Title>Form components</Title>
+            <Label isRequired>Label Required</Label>
+            <Input
+              required="required"
+              handleInputChange={this.handleInputChange}
+              isInvalid={!inputValue || false}
+              inputType="text"
+              inputValue={inputValue}
+              placeholder="Input Example"
+            />
+
+            <Label>Dropdown example:</Label>
+            <Dropdown
+              size="full"
+              title="Select Option"
+              list={ddExample}
+              handleSelectItem={() => {}}
+            />
+
+            <Label>Textarea example:</Label>
+            <Textarea
+              handleInputChange={this.handleInputChange}
+              inputValue={inputValue}
+              placeholder="Textarea example"
+            />
           </Card>
         </Column>
         <Column size="medium">

@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
 
 // Themes
-import { METRICS } from 'themes'
+import { METRICS } from '@themes'
 
 const ContainerWrapper = styled.div`
   margin: 0 auto;

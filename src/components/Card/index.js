@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 // Themes
-import { COLORS, METRICS } from 'themes'
+import { COLORS, METRICS } from '@themes'
 
 const CardWrapper = styled.div`
   background-color: ${COLORS.white};
