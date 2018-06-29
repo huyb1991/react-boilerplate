@@ -10,6 +10,7 @@ import Container from '@components/Layouts/Container'
 import Column from '@components/Layouts/Column'
 import Card from '@components/Card'
 import Button from '@components/Button'
+import Loading from '@components/Loading'
 
 import {
   Dropdown,
@@ -35,7 +36,7 @@ class Home extends React.Component {
 
   render() {
     const { inputValue } = this.state
-    const { repos } = this.props
+    const { loading, repos } = this.props
 
     const ddExample = [
       { value: 1, text: 'Option 1' },
@@ -78,6 +79,7 @@ class Home extends React.Component {
           <Card>
             <Button onClick={() => this.fetchRepoRequest()}>Fetch repositories</Button>
             <Title title="My repositories:" />
+            {loading && <Loading />}
             <ListRepo repos={repos} />
           </Card>
         </Column>
@@ -87,10 +89,12 @@ class Home extends React.Component {
 }
 
 Home.defaultProps = {
+  loading: false,
   repos: [],
 }
 
 Home.propTypes = {
+  loading: PropTypes.bool,
   repos: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   loadRepos: PropTypes.func.isRequired,
 }
@@ -100,6 +104,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
+  loading: state.home.get('loading'),
   repos: state.home.get('repos'),
 })
 
