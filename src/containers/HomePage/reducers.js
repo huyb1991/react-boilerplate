@@ -10,7 +10,6 @@ import {
 const initialState = fromJS({
   loading: false,
   error: false,
-  currentUser: '',
   repos: [],
 })
 
@@ -23,9 +22,8 @@ function appReducer(state = initialState, action) {
 
     case LOAD_REPOS_SUCCESS:
       return state
-        .set('repos', action.repos)
+        .set('repos', action.payload)
         .set('loading', false)
-        .set('currentUser', action.username)
 
     case LOAD_REPOS_ERROR:
       return state
