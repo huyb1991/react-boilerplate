@@ -9,6 +9,7 @@ import { loadRepos } from './actions'
 import Container from '@components/Layouts/Container'
 import Column from '@components/Layouts/Column'
 import Card from '@components/Card'
+import Button from '@components/Button'
 
 import {
   Dropdown,
@@ -24,17 +25,17 @@ class Home extends React.Component {
     inputValue: null,
   }
 
-  componentDidMount() {
-    this.props.loadRepos()
-  }
-
   handleInputChange = (text) => {
     this.setState({ inputValue: text })
   }
 
+  fetchRepoRequest = () => {
+    this.props.loadRepos()
+  }
+
   render() {
     const { inputValue } = this.state
-    const { username, repos } = this.props
+    const { repos } = this.props
 
     const ddExample = [
       { value: 1, text: 'Option 1' },
@@ -75,7 +76,8 @@ class Home extends React.Component {
         </Column>
         <Column size="medium">
           <Card>
-            <Title title={`${username} repos:`} />
+            <Button onClick={() => this.fetchRepoRequest()}>Fetch repositories</Button>
+            <Title title="My repositories:" />
             <ListRepo repos={repos} />
           </Card>
         </Column>
@@ -85,12 +87,10 @@ class Home extends React.Component {
 }
 
 Home.defaultProps = {
-  username: '',
   repos: [],
 }
 
 Home.propTypes = {
-  username: PropTypes.string,
   repos: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   loadRepos: PropTypes.func.isRequired,
 }
@@ -100,7 +100,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
-  username: state.home.get('currentUser'),
   repos: state.home.get('repos'),
 })
 
