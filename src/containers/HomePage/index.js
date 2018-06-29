@@ -13,13 +13,8 @@ import Card from '@components/Card'
 import Button from '@components/Button'
 import Loading from '@components/Loading'
 
-import {
-  Dropdown,
-  Label,
-  Input,
-  Textarea,
-} from '@components/Form'
 import Title from './components/Title'
+import FomrExample from './components/FormExample'
 import ListRepo from './components/ListRepo'
 
 // Example for styled-components
@@ -28,12 +23,13 @@ const ContentWrapper = styled.div`
 `
 
 class Home extends React.Component {
+  // Set state for example only, it should be use props with Redux for performance
   state = {
-    inputValue: null,
+    inputTextValue: null,
   }
 
   handleInputChange = (text) => {
-    this.setState({ inputValue: text })
+    this.setState({ inputTextValue: text })
   }
 
   fetchRepoRequest = () => {
@@ -41,7 +37,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const { inputValue } = this.state
+    const { inputTextValue } = this.state
     const { loading, repos } = this.props
 
     const ddExample = [
@@ -55,30 +51,16 @@ class Home extends React.Component {
         <Column size="small">
           <Card>
             <ContentWrapper>
-              <Title>Form components</Title>
-              <Label isRequired>Label Required</Label>
-              <Input
-                required="required"
-                handleInputChange={this.handleInputChange}
-                isInvalid={!inputValue || false}
-                inputType="text"
-                inputValue={inputValue}
-                placeholder="Input Example"
-              />
+              <FomrExample
+                inputTextValue={inputTextValue}
+                inputTextInvalid={!inputTextValue || false}
+                inputTextHandleChange={this.handleInputChange}
 
-              <Label>Dropdown example:</Label>
-              <Dropdown
-                size="full"
-                title="Select Option"
-                list={ddExample}
-                handleSelectItem={() => {}}
-              />
+                ddExample={ddExample}
+                ddExampleHandleChange={() => {}}
 
-              <Label>Textarea example:</Label>
-              <Textarea
-                handleInputChange={this.handleInputChange}
-                inputValue={inputValue}
-                placeholder="Textarea example"
+                inputTextareaValue=""
+                inputTextareaHanldeChange={() => {}}
               />
             </ContentWrapper>
           </Card>
