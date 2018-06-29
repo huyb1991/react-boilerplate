@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 // Actions
 import { loadRepos } from './actions'
@@ -9,32 +10,35 @@ import { loadRepos } from './actions'
 import Container from '@components/Layouts/Container'
 import Column from '@components/Layouts/Column'
 import Card from '@components/Card'
+import Button from '@components/Button'
+import Loading from '@components/Loading'
 
-import {
-  Dropdown,
-  Label,
-  Input,
-  Textarea,
-} from '@components/Form'
 import Title from './components/Title'
+import FomrExample from './components/FormExample'
 import ListRepo from './components/ListRepo'
 
-class Home extends React.Component {
-  state = {
-    inputValue: null,
-  }
+// Example for styled-components
+const ContentWrapper = styled.div`
+  padding: 1rem;
+`
 
-  componentDidMount() {
-    this.props.loadRepos()
+class Home extends React.Component {
+  // Set state for example only, it should be use props with Redux for performance
+  state = {
+    inputTextValue: null,
   }
 
   handleInputChange = (text) => {
-    this.setState({ inputValue: text })
+    this.setState({ inputTextValue: text })
+  }
+
+  fetchRepoRequest = () => {
+    this.props.loadRepos()
   }
 
   render() {
-    const { inputValue } = this.state
-    const { username, repos } = this.props
+    const { inputTextValue } = this.state
+    const { loading, repos } = this.props
 
     const ddExample = [
       { value: 1, text: 'Option 1' },
@@ -46,37 +50,29 @@ class Home extends React.Component {
       <Container display="flex">
         <Column size="small">
           <Card>
-            <Title>Form components</Title>
-            <Label isRequired>Label Required</Label>
-            <Input
-              required="required"
-              handleInputChange={this.handleInputChange}
-              isInvalid={!inputValue || false}
-              inputType="text"
-              inputValue={inputValue}
-              placeholder="Input Example"
-            />
+            <ContentWrapper>
+              <FomrExample
+                inputTextValue={inputTextValue}
+                inputTextInvalid={!inputTextValue || false}
+                inputTextHandleChange={this.handleInputChange}
 
-            <Label>Dropdown example:</Label>
-            <Dropdown
-              size="full"
-              title="Select Option"
-              list={ddExample}
-              handleSelectItem={() => {}}
-            />
+                ddExample={ddExample}
+                ddExampleHandleChange={() => {}}
 
-            <Label>Textarea example:</Label>
-            <Textarea
-              handleInputChange={this.handleInputChange}
-              inputValue={inputValue}
-              placeholder="Textarea example"
-            />
+                inputTextareaValue=""
+                inputTextareaHanldeChange={() => {}}
+              />
+            </ContentWrapper>
           </Card>
         </Column>
         <Column size="medium">
           <Card>
-            <Title title={`${username} repos:`} />
-            <ListRepo repos={repos} />
+            <ContentWrapper>
+              <Button onClick={() => this.fetchRepoRequest()}>Fetch repositories</Button>
+              <Title title="My repositories:" />
+              {loading && <Loading />}
+              <ListRepo repos={repos} />
+            </ContentWrapper>
           </Card>
         </Column>
       </Container>
@@ -85,12 +81,12 @@ class Home extends React.Component {
 }
 
 Home.defaultProps = {
-  username: '',
+  loading: false,
   repos: [],
 }
 
 Home.propTypes = {
-  username: PropTypes.string,
+  loading: PropTypes.bool,
   repos: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   loadRepos: PropTypes.func.isRequired,
 }
@@ -100,7 +96,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
-  username: state.home.get('currentUser'),
+  loading: state.home.get('loading'),
   repos: state.home.get('repos'),
 })
 
