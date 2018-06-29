@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 // Actions
 import { loadRepos } from './actions'
@@ -20,6 +21,11 @@ import {
 } from '@components/Form'
 import Title from './components/Title'
 import ListRepo from './components/ListRepo'
+
+// Example for styled-components
+const ContentWrapper = styled.div`
+  padding: 1rem;
+`
 
 class Home extends React.Component {
   state = {
@@ -48,39 +54,43 @@ class Home extends React.Component {
       <Container display="flex">
         <Column size="small">
           <Card>
-            <Title>Form components</Title>
-            <Label isRequired>Label Required</Label>
-            <Input
-              required="required"
-              handleInputChange={this.handleInputChange}
-              isInvalid={!inputValue || false}
-              inputType="text"
-              inputValue={inputValue}
-              placeholder="Input Example"
-            />
+            <ContentWrapper>
+              <Title>Form components</Title>
+              <Label isRequired>Label Required</Label>
+              <Input
+                required="required"
+                handleInputChange={this.handleInputChange}
+                isInvalid={!inputValue || false}
+                inputType="text"
+                inputValue={inputValue}
+                placeholder="Input Example"
+              />
 
-            <Label>Dropdown example:</Label>
-            <Dropdown
-              size="full"
-              title="Select Option"
-              list={ddExample}
-              handleSelectItem={() => {}}
-            />
+              <Label>Dropdown example:</Label>
+              <Dropdown
+                size="full"
+                title="Select Option"
+                list={ddExample}
+                handleSelectItem={() => {}}
+              />
 
-            <Label>Textarea example:</Label>
-            <Textarea
-              handleInputChange={this.handleInputChange}
-              inputValue={inputValue}
-              placeholder="Textarea example"
-            />
+              <Label>Textarea example:</Label>
+              <Textarea
+                handleInputChange={this.handleInputChange}
+                inputValue={inputValue}
+                placeholder="Textarea example"
+              />
+            </ContentWrapper>
           </Card>
         </Column>
         <Column size="medium">
           <Card>
-            <Button onClick={() => this.fetchRepoRequest()}>Fetch repositories</Button>
-            <Title title="My repositories:" />
-            {loading && <Loading />}
-            <ListRepo repos={repos} />
+            <ContentWrapper>
+              <Button onClick={() => this.fetchRepoRequest()}>Fetch repositories</Button>
+              <Title title="My repositories:" />
+              {loading && <Loading />}
+              <ListRepo repos={repos} />
+            </ContentWrapper>
           </Card>
         </Column>
       </Container>
