@@ -53,7 +53,7 @@ Textarea.propTypes = {
   inputValue: PropTypes.string,
   placeholder: PropTypes.string,
   required: PropTypes.string,
-  handleInputChange: PropTypes.func.isRequired,
+  handleInputChange: PropTypes.func,
 }
 
 Textarea.defaultProps = {
@@ -61,6 +61,7 @@ Textarea.defaultProps = {
   inputValue: '',
   placeholder: '',
   required: '',
+  handleInputChange: () => {},
 }
 
 export default Textarea
