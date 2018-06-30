@@ -27,6 +27,7 @@ class Input extends React.Component {
     const { inputValue } = this.state
     const {
       required,
+      disabled,
       isInvalid,
       inputType,
       placeholder,
@@ -36,6 +37,7 @@ class Input extends React.Component {
     return (
       <StyledInput
         required={required}
+        disabled={disabled}
         value={inputValue || ''}
         type={inputType}
         isInvalid={isInvalid}
@@ -48,20 +50,23 @@ class Input extends React.Component {
 }
 
 Input.propTypes = {
+  disabled: PropTypes.bool,
   isInvalid: PropTypes.bool,
   inputValue: PropTypes.string,
   inputType: PropTypes.string,
   placeholder: PropTypes.string,
   required: PropTypes.string,
-  handleInputChange: PropTypes.func.isRequired,
+  handleInputChange: PropTypes.func,
 }
 
 Input.defaultProps = {
+  disabled: false,
   isInvalid: false,
   inputValue: '',
   inputType: 'text',
   placeholder: '',
   required: '',
+  handleInputChange: () => {},
 }
 
 export default Input
