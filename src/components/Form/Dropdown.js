@@ -111,13 +111,14 @@ class Dropdown extends React.Component {
 Dropdown.defaultProps = {
   title: '',
   isInvalid: false,
+  handleSelectItem: () => {},
 }
 
 Dropdown.propTypes = {
   title: PropTypes.string,
   list: PropTypes.array.isRequired,
   isInvalid: PropTypes.bool,
-  handleSelectItem: PropTypes.func.isRequired,
+  handleSelectItem: PropTypes.func,
 }
 
 export default Dropdown
