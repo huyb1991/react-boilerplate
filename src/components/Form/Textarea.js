@@ -38,7 +38,7 @@ class Textarea extends React.Component {
     return (
       <StyledTextarea
         required={required}
-        value={inputValue || ''}
+        value={inputValue}
         isInvalid={isInvalid}
         placeholder={placeholder}
         onChange={this.handleChange}

@@ -38,7 +38,7 @@ class Input extends React.Component {
       <StyledInput
         required={required}
         disabled={disabled}
-        value={inputValue || ''}
+        value={inputValue}
         type={inputType}
         isInvalid={isInvalid}
         placeholder={placeholder}
