@@ -30,17 +30,17 @@ class Textarea extends React.Component {
     const { inputValue } = this.state
     const {
       required,
-      isInvalid,
       placeholder,
+      isInvalid,
       handleInputChange,
     } = this.props
 
     return (
       <StyledTextarea
         required={required}
-        value={inputValue}
         isInvalid={isInvalid}
         placeholder={placeholder}
+        value={inputValue}
         onChange={this.handleChange}
         onBlur={() => handleInputChange(inputValue)}
       />
@@ -49,18 +49,18 @@ class Textarea extends React.Component {
 }
 
 Textarea.propTypes = {
+  required: PropTypes.bool,
   isInvalid: PropTypes.bool,
-  inputValue: PropTypes.string,
   placeholder: PropTypes.string,
-  required: PropTypes.string,
+  inputValue: PropTypes.string,
   handleInputChange: PropTypes.func,
 }
 
 Textarea.defaultProps = {
+  required: false,
   isInvalid: false,
-  inputValue: '',
   placeholder: '',
-  required: '',
+  inputValue: '',
   handleInputChange: () => {},
 }
 

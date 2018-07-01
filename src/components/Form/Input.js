@@ -29,8 +29,8 @@ class Input extends React.Component {
       required,
       disabled,
       isInvalid,
-      inputType,
       placeholder,
+      inputType,
       handleInputChange,
     } = this.props
 
@@ -38,10 +38,10 @@ class Input extends React.Component {
       <StyledInput
         required={required}
         disabled={disabled}
-        value={inputValue}
-        type={inputType}
         isInvalid={isInvalid}
         placeholder={placeholder}
+        type={inputType}
+        value={inputValue}
         onChange={this.handleChange}
         onBlur={() => handleInputChange(inputValue)}
       />
@@ -50,22 +50,22 @@ class Input extends React.Component {
 }
 
 Input.propTypes = {
+  required: PropTypes.bool,
   disabled: PropTypes.bool,
   isInvalid: PropTypes.bool,
-  inputValue: PropTypes.string,
-  inputType: PropTypes.string,
   placeholder: PropTypes.string,
-  required: PropTypes.string,
+  inputType: PropTypes.string,
+  inputValue: PropTypes.string,
   handleInputChange: PropTypes.func,
 }
 
 Input.defaultProps = {
+  required: false,
   disabled: false,
   isInvalid: false,
-  inputValue: '',
-  inputType: 'text',
   placeholder: '',
-  required: '',
+  inputType: 'text',
+  inputValue: '',
   handleInputChange: () => {},
 }
 
