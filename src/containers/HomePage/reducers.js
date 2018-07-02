@@ -11,6 +11,7 @@ const initialState = fromJS({
   loading: false,
   error: false,
   repos: [],
+  message: '',
 })
 
 function appReducer(state = initialState, action) {
@@ -24,11 +25,13 @@ function appReducer(state = initialState, action) {
       return state
         .set('repos', action.payload)
         .set('loading', false)
+        .set('message', 'Successfully fetch my repositories')
 
     case LOAD_REPOS_ERROR:
       return state
-        .set('error', action.error)
+        .set('error', true)
         .set('loading', false)
+        .set('message', `Could not get repository data! ${action.error}`)
 
     default:
       return state
