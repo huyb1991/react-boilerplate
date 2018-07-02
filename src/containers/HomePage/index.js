@@ -10,6 +10,7 @@ import { loadRepos } from './actions'
 import Container from '@components/Layouts/Container'
 import Column from '@components/Layouts/Column'
 import Card from '@components/Card'
+import Message from '@components/Message'
 import Button from '@components/Button'
 import Loading from '@components/Loading'
 
@@ -38,7 +39,12 @@ class Home extends React.Component {
 
   render() {
     const { inputTextValue } = this.state
-    const { loading, repos } = this.props
+    const {
+      message,
+      error,
+      loading,
+      repos,
+    } = this.props
 
     const ddExample = [
       { value: 1, text: 'Option 1' },
@@ -66,6 +72,7 @@ class Home extends React.Component {
           </Card>
         </Column>
         <Column size="medium">
+          {message && <Message message={message} isError={error} />}
           <Card>
             <ContentWrapper>
               <Button onClick={() => this.fetchRepoRequest()}>Fetch repositories</Button>
@@ -81,11 +88,15 @@ class Home extends React.Component {
 }
 
 Home.defaultProps = {
+  message: '',
+  error: false,
   loading: false,
   repos: [],
 }
 
 Home.propTypes = {
+  message: PropTypes.string,
+  error: PropTypes.bool,
   loading: PropTypes.bool,
   repos: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   loadRepos: PropTypes.func.isRequired,
@@ -96,6 +107,8 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
+  message: state.home.get('message'),
+  error: state.home.get('error'),
   loading: state.home.get('loading'),
   repos: state.home.get('repos'),
 })
