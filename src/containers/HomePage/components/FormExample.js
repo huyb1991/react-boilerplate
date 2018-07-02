@@ -28,7 +28,7 @@ const FormExample = ({
     <Title>Form components</Title>
     <Label isRequired>Label Required</Label>
     <Input
-      required="required"
+      required
       inputType="text"
       placeholder="Input Example"
       inputValue={inputTextValue}

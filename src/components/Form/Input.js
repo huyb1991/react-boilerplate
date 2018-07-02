@@ -14,7 +14,7 @@ const StyledInput = BaseStyled.extend`
 
 class Input extends React.Component {
   state = {
-    inputValue: this.props.inputValue,
+    inputValue: this.props.inputValue || '',
   }
 
   handleChange = (e) => {
