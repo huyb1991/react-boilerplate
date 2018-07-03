@@ -14,7 +14,7 @@ const StyledInput = BaseStyled.extend`
 
 class Input extends React.Component {
   state = {
-    inputValue: this.props.inputValue,
+    inputValue: this.props.inputValue || '',
   }
 
   handleChange = (e) => {
@@ -27,19 +27,21 @@ class Input extends React.Component {
     const { inputValue } = this.state
     const {
       required,
+      disabled,
       isInvalid,
-      inputType,
       placeholder,
+      inputType,
       handleInputChange,
     } = this.props
 
     return (
       <StyledInput
         required={required}
-        value={inputValue || ''}
-        type={inputType}
+        disabled={disabled}
         isInvalid={isInvalid}
         placeholder={placeholder}
+        type={inputType}
+        value={inputValue}
         onChange={this.handleChange}
         onBlur={() => handleInputChange(inputValue)}
       />
@@ -48,20 +50,23 @@ class Input extends React.Component {
 }
 
 Input.propTypes = {
+  required: PropTypes.bool,
+  disabled: PropTypes.bool,
   isInvalid: PropTypes.bool,
-  inputValue: PropTypes.string,
-  inputType: PropTypes.string,
   placeholder: PropTypes.string,
-  required: PropTypes.string,
-  handleInputChange: PropTypes.func.isRequired,
+  inputType: PropTypes.string,
+  inputValue: PropTypes.string,
+  handleInputChange: PropTypes.func,
 }
 
 Input.defaultProps = {
+  required: false,
+  disabled: false,
   isInvalid: false,
-  inputValue: '',
-  inputType: 'text',
   placeholder: '',
-  required: '',
+  inputType: 'text',
+  inputValue: '',
+  handleInputChange: () => {},
 }
 
 export default Input

@@ -33,6 +33,7 @@
     "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
@@ -56,6 +57,7 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "immutable": "^3.8.2",
+    "js-cookie": "^2.2.0",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
