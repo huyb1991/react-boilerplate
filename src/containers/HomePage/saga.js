@@ -6,14 +6,14 @@ import { LOAD_REPOS } from './constants'
 import { loadReposSuccess, loadReposError } from './actions'
 
 // Helpers
-import request from '@helpers/request'
+import { getRequest } from '@helpers/request'
 import api from '@helpers/api'
 
 export function* getRepos() {
   const requestURL = api.getRepos
 
   try {
-    const repos = yield call(request, requestURL)
+    const repos = yield call(getRequest, requestURL)
     yield put(loadReposSuccess(repos))
   } catch (err) {
     yield put(loadReposError(err))

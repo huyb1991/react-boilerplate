@@ -35,15 +35,16 @@ const checkStatus = (response) => {
  * @param {string} overrideMethod request method
  */
 const setupRequestOptions = (options = {}, overrideMethod) => {
+  // This is my setting for cookies token, replace the token by your own
   const token = Cookies.get('token')
 
   const newOptions = {
     headers: {
       Accept: 'application/json',
-      Authorization: `Bearer ${token}`,
     },
   }
 
+  if (token) newOptions.headers.authorization = `Bearer ${token}`
   if (overrideMethod) newOptions.method = overrideMethod
   if (options.body) {
     newOptions.headers['Content-Type'] = 'application/json'
