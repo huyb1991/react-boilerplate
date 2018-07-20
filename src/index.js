@@ -12,9 +12,9 @@ import Header from '@components/Header'
 import Footer from '@components/Footer'
 
 // Pages
-import HomePage from './containers/HomePage'
-import AboutPage from './containers/AboutPage'
-import NotFoundPage from './containers/NotFoundPage'
+import HomePage from './app/containers/HomePage'
+import AboutPage from './app/containers/AboutPage'
+import NotFoundPage from './app/containers/NotFoundPage'
 
 // Themes
 import { COLORS } from '@themes'
