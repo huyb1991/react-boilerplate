@@ -3,7 +3,7 @@
  */
 
 import { combineReducers } from 'redux'
-import home from './app/containers/HomePage/reducers'
+import home from './app/routes/homepage/reducers'
 
 export default combineReducers({
   home,

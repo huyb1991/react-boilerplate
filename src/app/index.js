@@ -1,5 +1,5 @@
 import React from 'react'
-import './style'
+import './styles'
 
 // Pages
 import Routes from './routes'

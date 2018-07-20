@@ -1,21 +1,35 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { render, hydrate } from 'react-dom'
 import { Provider } from 'react-redux'
+import Loadable from 'react-loadable'
+import { Frontload } from 'react-frontload'
 import { ConnectedRouter } from 'connected-react-router'
+import { PersistGate } from 'redux-persist/integration/react'
+import createStore from './store'
 
-// Configs
-import store from './store'
+import App from './app'
 
-// Pages
-import MainApp from './app'
+// Create a store and get back itself and its history object
+const { store, history, persistor } = createStore()
 
-
-const App = () => (
+const Application = (
   <Provider store={store}>
-    <ConnectedRouter history={null}>
-      <MainApp />
-    </ConnectedRouter>
+    <PersistGate loading={null} persistor={persistor}>
+      <ConnectedRouter history={history}>
+        <Frontload noServerRender>
+          <App />
+        </Frontload>
+      </ConnectedRouter>
+    </PersistGate>
   </Provider>
 )
 
-ReactDOM.render(<App />, document.getElementById('root'))
+const root = document.querySelector('#root')
+
+if (process.env.NODE_ENV === 'production') {
+  Loadable.preloadReady().then(() => {
+    hydrate(Application, root)
+  })
+} else {
+  render(Application, root)
+}
